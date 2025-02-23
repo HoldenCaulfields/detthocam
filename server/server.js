@@ -6,8 +6,9 @@ const app = express();
 
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
-console.log(path.join(__dirname, '../client/dist'));
+app.use(express.static(path.join(process.cwd(),'client','dist')));
+console.log(path.join(process.cwd(),'client','dist'));
+
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(process.cwd(),'client','dist','index.html'));
