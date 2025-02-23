@@ -20,11 +20,13 @@ const About = () => {
   return (
     <div id="about" className="p-6 flex flex-col items-center bg-gradient-to-r from-gray-100 to-red-50">
       <h2 className="text-2xl font-bold mb-4 text-center">Kỷ Niệm</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center">
+
+      {/* Mobile: Horizontal Scroll | Desktop: Centered Grid */}
+      <div className="w-full flex overflow-x-auto md:grid md:grid-cols-3 md:justify-center md:place-items-center gap-6 scrollbar-hide scroll-smooth snap-x snap-mandatory">
         {images.map((image) => (
           <div 
             key={image.id} 
-            className="w-64 h-64 overflow-hidden rounded-lg shadow-lg flex justify-center items-center transition-transform transform hover:scale-105"
+            className="w-64 h-64 flex-shrink-0 md:flex-shrink-0 overflow-hidden rounded-lg shadow-lg flex justify-center items-center transition-transform transform hover:scale-105 snap-center"
           >
             <img
               src={image.src}
