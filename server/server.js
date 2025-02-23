@@ -8,8 +8,12 @@ app.use(cors({ origin: "https://detthocamm.onrender.com"}));
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.get('*', (req, res) => {
+/* app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+}); */
+
+app.get("/api/data", (req, res) => {
+    res.json({ message: "Hello from the backend!" });
 });
 
 
