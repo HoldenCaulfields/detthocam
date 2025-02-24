@@ -8,12 +8,12 @@ import img6 from "../assets/kn6.jpg";
 import React from "react";
 
 const images = [
-  { id: 1, src: img1, alt: "Image 1" },
-  { id: 2, src: img2, alt: "Image 2" },
-  { id: 3, src: img3, alt: "Image 3" },
-  { id: 4, src: img4, alt: "Image 4" },
-  { id: 5, src: img5, alt: "Image 5" },
-  { id: 6, src: img6, alt: "Image 6" },
+  { id: 1, src: img1, alt: "Memory 1" },
+  { id: 2, src: img2, alt: "Memory 2" },
+  { id: 3, src: img3, alt: "Memory 3" },
+  { id: 4, src: img4, alt: "Memory 4" },
+  { id: 5, src: img5, alt: "Memory 5" },
+  { id: 6, src: img6, alt: "Memory 6" },
 ];
 
 const About = () => {
@@ -22,17 +22,22 @@ const About = () => {
       <h2 className="text-2xl font-bold mb-4 text-center">Kỷ Niệm</h2>
 
       {/* Mobile: Horizontal Scroll | Desktop: Centered Grid */}
-      <div className="w-full flex overflow-x-auto md:grid md:grid-cols-3 md:justify-center md:place-items-center gap-6 scrollbar-hide scroll-smooth snap-x snap-mandatory">
+      <div
+        aria-label="Memory images gallery"
+        className="w-full flex overflow-x-auto md:grid md:grid-cols-3 md:justify-center md:place-items-center gap-6 scrollbar-hide scroll-smooth snap-x snap-mandatory"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }} // Cross-browser scrollbar hide
+      >
         {images.map((image) => (
           <div 
             key={image.id} 
-            className="w-64 h-64 flex-shrink-0 md:flex-shrink-0 overflow-hidden rounded-lg shadow-lg flex justify-center items-center transition-transform transform hover:scale-105 snap-center"
+            className="w-64 h-64 flex-shrink-0 md:flex-shrink-0 overflow-hidden rounded-lg shadow-lg flex justify-center items-center transition-transform transform hover:scale-105 hover:rotate-1 snap-center"
           >
             <img
               src={image.src}
               alt={image.alt}
               className="w-full h-full object-cover"
               loading="lazy"
+              onError={(e) => (e.target.src = "/fallback.jpg")}
             />
           </div>
         ))}
